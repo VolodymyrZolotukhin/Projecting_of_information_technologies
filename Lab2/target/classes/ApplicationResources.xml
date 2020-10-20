@@ -5,5 +5,8 @@
 	<bean id="Storage" class="com.Lab2.Storage">
 		<property name="filePath" value="db.ser"/>
 	</bean>
+	<bean id="StorageService" class="com.Lab2.StorageService">
+		<property name="db" ref="Storage" />
+	</bean>
 
 </beans>

@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"ApplicationResources.xml");
-		Storage db = (Storage)ctx.getBean("Storage");
+		StorageService db = (StorageService)ctx.getBean("StorageService");
 		Scanner sc = new Scanner(System.in);
 		boolean flag = true;
 		while(flag)
@@ -33,7 +33,7 @@ public class Main {
 					db.save();
 				break;
 				case 6:
-					printDb(db);
+					db.printDb();
 				break;
 				case 7:
 					flag = false;
@@ -76,18 +76,5 @@ public class Main {
 		System.out.println("Input department: ");
 		st.setDepartment(sc.nextLine());
 		return st;
-	}
-	public static void printDb(Storage db)
-	{
-		ArrayList <Student> store = db.getDb();
-		for(int i=0;i<store.size();i+=1)
-		{
-			System.out.println("Student #"+i);
-			System.out.println("ID: "+store.get(i).getID());
-			System.out.println("Name: " + store.get(i).getName());
-			System.out.println("Surename: "+store.get(i).getSurname());
-			System.out.println("Department: "+ store.get(i).getDepartment());
-			System.out.println();
-		}
 	}
 }
